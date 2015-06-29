@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Uncomment to make IE8 render like IE7 -->
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+  <%#= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "GM ELECTRICALS", products_path %></a></h1>
+    </li>
+  </ul>
+  <div class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li><%= link_to "Browse Products", products_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Browse Purchase Orders", purchase_orders_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Browse Customers", customers_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Cart" %></li>
+    </ul>
+    </div>
+</nav>
+
+<div class="row">
+  <div class="small-8 columns"><%= yield %></div>
+</div>
+
+<%= javascript_include_tag "application" %>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<%= form_for(@purchase_order) do |f| %>
+  <% if @purchase_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchase_order.errors.count, "error") %> prohibited this purchase_order from being saved:</h2>
+
+      <ul>
+      <% @purchase_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :customer_id %><br>
+      <%= collection_select(:purchase_order, :customer_id, @customers, :id, :name)%>
+    </div>
+    <div class="field">
+      <%= f.label :product_id %><br>
+      <%= collection_select(:purchase_order, :product_id, @products, :id, :name)%>
+    </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :discount %><br>
+    <%= f.text_field :discount %>
+  </div>
+  <div class="field">
+    <%= f.label :paid_amount %><br>
+    <%= f.text_field :paid_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :purchase_date %><br>
+    <%= date_select("purchase_order", "purchase_date", order: [:day, :month, :year])%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
